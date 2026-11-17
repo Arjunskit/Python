@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Aircraft
+{% endblock %}
+
+{% block content %}
+
+<h2>Add Aircraft</h2>
+
+<form method="post" action="{{ url_for('add_aircraft') }}">
+
+    <label>Registration Number:</label>
+    <input type="text" name="registration_no">
+
+    <br><br>
+
+    <label>Model:</label>
+    <input type="text" name="model">
+
+    <br><br>
+
+    <label>Manufacturer:</label>
+    <input type="text" name="manufacturer">
+
+    <br><br>
+
+    <label>Seating Capacity:</label>
+    <input type="number" name="seating_capacity">
+
+    <br><br>
+
+    <button type="submit">
+        Add Aircraft
+    </button>
+
+</form>
+
+{% endblock %}

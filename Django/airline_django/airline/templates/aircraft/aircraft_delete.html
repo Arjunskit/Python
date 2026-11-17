@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Delete Aircraft</h2>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% else %}
+         <p>
+            Are you sure you want to delete
+            <strong>{{ aircraft.registration_no }}</strong>?
+         </p>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-danger">
+                Yes, Delete
+            </button>
+
+            <a href="{% url 'aircraft_list' %}" class="btn btn-secondary">
+                Cancel
+            </a>
+        </form>
+    {% endif %}
+   
+</div>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+
+    <h2>Update Aircraft</h2>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>Aircraft ID</label>
+            <input
+                type="number"
+                name="aircraftid"
+                value="{{ aircraft.aircraftid }}"
+                class="form-control"
+                readonly
+            >
+        </div>
+
+        <div class="mb-3">
+            <label>Model</label>
+            <input
+                type="text"
+                name="model"
+                value="{{ aircraft.model }}"
+                class="form-control"
+            >
+        </div>
+
+        <div class="mb-3">
+            <label>Manufacturer</label>
+            <input
+                type="text"
+                name="manufacturer"
+                value="{{ aircraft.manufacturer }}"
+                class="form-control"
+            >
+        </div>
+
+        <div class="mb-3">
+            <label>Seating Capacity</label>
+            <input
+                type="number"
+                name="seating_capacity"
+                value="{{ aircraft.seating_capacity }}"
+                class="form-control"
+            >
+        </div>
+
+        <div class="mb-3">
+            <label>Registration Number</label>
+            <input
+                type="text"
+                name="registration_no"
+                value="{{ aircraft.registration_no }}"
+                class="form-control"
+            >
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Update Aircraft
+        </button>
+
+        <a href="{% url 'aircraft_list' %}" class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+
+</div>
+
+{% endblock %}

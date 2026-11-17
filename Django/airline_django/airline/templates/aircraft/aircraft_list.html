@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+
+{% block title %}
+Aircraft
+{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+
+    <div>
+        <h1>Aircraft</h1>
+        <p class="text-muted">
+            Manage aircraft in the airline system
+        </p>
+    </div>
+
+    <a class="btn btn-primary btn-sm"
+        href="{% url 'aircraft_create' %}">
+        Add Aircraft
+    </a>
+
+</div>
+
+<div class="card shadow-sm">
+
+    <div class="card-body">
+
+        <table class="table table-hover align-middle">
+
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Model</th>
+                    <th>Manufacturer</th>
+                    <th>Seats</th>
+                    <th>Registration</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for aircraft in aircraft %}
+
+                <tr>
+
+                    <td>
+                        {{ aircraft.aircraftid }}
+                    </td>
+
+                    <td>
+                        {{ aircraft.model }}
+                    </td>
+
+                    <td>
+                        {{ aircraft.manufacturer }}
+                    </td>
+
+                    <td>
+                        {{ aircraft.seating_capacity }}
+                    </td>
+
+                    <td>
+                        <span class="badge bg-secondary">
+                            {{ aircraft.registration_no }}
+                        </span>
+                    </td>
+                    <td>
+                        <a
+                            href="{% url 'aircraft_update' aircraft.aircraftid %}"
+                            class="btn btn-warning btn-sm"
+                        >
+                            Edit
+                        </a>
+
+                        <a
+                            href="{% url 'aircraft_delete' aircraft.aircraftid %}"
+                            class="btn btn-danger btn-sm"
+                        >
+                            Delete
+                        </a>
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="5" class="text-center">
+                        No aircraft found.
+                    </td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

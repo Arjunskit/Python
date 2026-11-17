@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Aircraft
+{% endblock %}
+
+{% block content %}
+
+<h2>Edit Aircraft</h2>
+
+<form method="POST">
+
+    <p>
+        <strong>Aircraft ID:</strong>
+        {{ aircraft.aircraftID }}
+    </p>
+
+    <label>Registration Number:</label>
+    <input
+        type="text"
+        value="{{ aircraft.registration_no }}"
+        disabled
+    >
+
+    <br><br>
+
+    <label>Model:</label>
+    <input
+        type="text"
+        name="model"
+        value="{{ aircraft.model }}"
+        required
+    >
+
+    <br><br>
+
+    <label>Manufacturer:</label>
+    <input
+        type="text"
+        name="manufacturer"
+        value="{{ aircraft.manufacturer }}"
+        required
+    >
+
+    <br><br>
+
+    <label>Seating Capacity:</label>
+    <input
+        type="number"
+        name="seating_capacity"
+        value="{{ aircraft.seating_capacity }}"
+        min="1"
+        required
+    >
+
+    <br><br>
+
+    <button type="submit">
+        Update Aircraft
+    </button>
+
+    <a href="{{ url_for('aircraft') }}">
+        Cancel
+    </a>
+
+</form>
+
+{% endblock %}

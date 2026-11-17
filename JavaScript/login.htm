@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        #container {
+            height: 100vh;
+            background-color: cornflowerblue;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            max-width: 326px;
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 20px;
+            border: 1px solid whitesmoke;
+            border-radius: 5px;
+        }
+
+        button {
+            max-width: 30%;
+            width: 100%;
+            align-self: center;
+            background: none;
+            border: 1px solid whitesmoke;
+            color: whitesmoke;
+            padding: 5px 2px;
+            cursor: pointer;
+
+        }
+
+        button:hover{
+            background-color: whitesmoke;
+            color: black;
+        }
+
+        h4 {
+            align-self: center;
+            color: whitesmoke;
+        }
+
+        input {
+            padding: 7px 5px;
+            border: none;
+            border-radius: 3px;
+        }
+    </style>
+
+    <script>
+        userDetails = {
+            "sk.arjun.it@gmail.com": "1234"
+        }
+       
+        function login() {
+            const email = document.getElementById("emailID").value
+            const password = document.getElementById("passwordID").value
+            if (email in userDetails) {
+                if (password == userDetails[email]) {
+                    alert("Login Successfully")
+                } else {
+                    alert("Incorrect Password!")
+                }
+            } else {
+                alert("Incorrect email")
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="container">
+        <form>
+            <h4>Login</h4>
+            <input type="email" placeholder="Email" id="emailID">
+            <input type="password" placeholder="Password" id="passwordID">
+            <button onclick="login()">Login</button>
+        </form>
+    </div>
+</body>
+</html>
